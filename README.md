@@ -4,7 +4,7 @@ Made by [Code Generation Software](http://codegeneration.io/)
 
 ## Topics 🚀
 
-1. [**Javascript**](docs/javascript.md)
+1. [**JavaScript**](docs/javascript.md)
 2. [**React**](docs/react/README.md)
 3. [**React Native**](docs/react-native/README.md)
 3. [**Angular**](docs/angular/README.md)
@@ -13,6 +13,10 @@ Made by [Code Generation Software](http://codegeneration.io/)
 5. [**Development**](docs/development.md)
 6. [**Git Flow**](docs/git.md)
 7. [**Docker**](docs/docker.md)
+
+## Features / components
+
+1. [**React Navigation header HOC**](/features-components/react-navigation-header-hoc.md)
 
 ## Contact Us 😏
 

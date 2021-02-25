@@ -14,7 +14,7 @@ Made by [Code Generation Software](http://codegeneration.io/)
 6. [**Git Flow**](docs/git.md)
 7. [**Docker**](docs/docker.md)
 
-## Features / components
+## Features / components 🔥
 
 1. [**React Navigation header HOC**](/features-components/react-navigation-header-hoc.md)
 

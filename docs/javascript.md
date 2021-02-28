@@ -5,6 +5,7 @@
 ## Content ✈️ 
 
   - [**Optimize your code-base**](#optimize-your-code-base)
+  - [**Hacks and tricks**](#hacks-and-tricks)
 
 ## **Optimize your code-base**
 
@@ -54,7 +55,7 @@
   const handledStatus = STATUSES[receivedStatus]();
 ```
 
-- ### Try to always use ternary expressions instead. It helps to reduce redundant lines of code.
+- ### Try to always use ternary expressions. It helps to reduce redundant lines of code.
 
 ```javascript
   const status = user?.id ? 'online' : 'offline:
@@ -68,5 +69,23 @@
     status = 'online';
   } else {
     status = 'offlne'
+  }
+```
+
+## **Hacks and tricks**
+
+- ### To remove duplicates from array, you can use new Set contstructor in combination with spread operator.
+
+> With primitives inside
+
+```javascript
+  const unique = [...new Set(array)];
+```
+
+> With complex data types;
+
+```javascript
+  const removeDuplicates = (array, key) => {
+    return [...new Map(arr.map(item => [item[key], item])).values()]
   }
 ```

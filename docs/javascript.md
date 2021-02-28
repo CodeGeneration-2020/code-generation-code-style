@@ -74,7 +74,7 @@
 
 ## **Hacks and tricks**
 
-- ### To remove duplicates from array, you can use new Set contstructor in combination with spread operator.
+- ### To remove duplicates from array, you can use new Set or new Map contstructors in combination with spread operator.
 
 > With primitives inside
 

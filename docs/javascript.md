@@ -50,5 +50,23 @@
       return 'Your payment has been rejected!';
     },
   };
+  
   const handledStatus = STATUSES[receivedStatus]();
+```
+
+- ### Try to always use ternary expressions instead. It helps to reduce redundant lines of code.
+
+```javascript
+  const status = user?.id ? 'online' : 'offline:
+```
+
+> Instead of
+
+```javascript
+  let status;
+  if (user?.id) {
+    status = 'online';
+  } else {
+    status = 'offlne'
+  }
 ```

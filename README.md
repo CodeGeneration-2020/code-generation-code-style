@@ -5,7 +5,7 @@ Made by [Code Generation Software](http://codegeneration.io/)
 ## Topics 🚀
 
 1. [**JavaScript**](docs/javascript.md)
-2. [**React**](docs/react.md/README.md)
+2. [**React**](docs/react.md)
 3. [**React Native**](docs/react-native/README.md)
 3. [**Angular**](docs/angular/README.md)
 3. [**NodeJS / Express**](docs/node-express/README.md)

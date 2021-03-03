@@ -72,6 +72,59 @@ if (user?.id) {
 }
 ```
 
+- ### Use async/await instead of then/catch.
+
+> Instead of
+
+```javascript
+getListOfProducts()
+  .then(({ data }) => setData(data))
+  .catch()
+```
+
+> Just use
+
+```javascript
+try {
+  const { data } = await getListOfProducts();
+} catch(error) {
+  ...
+}
+```
+
+- ### Always try to move reusable methods in utils.js file.
+
+> Instead of writing similiar methods again and again just use
+
+```javascript
+import { calculateTotalPrice } from '../utils.js';
+```
+
+- ### ALWAYS avoid nested if/else statements.
+
+> Instead of
+
+```javascript
+if (isLoggedIn) {
+  setLoggedIn(true);
+  if (isPremium) {
+    return { premiumStatus: 'activated' };
+  } else {
+    return { premiumStatus: 'not_available' };
+  }
+}
+```
+
+> Better to use
+
+```javascript
+if (isLoggedIn) {
+  return isPremium ? 
+    { premiumStatus: 'activated' } :
+    { premiumStatus: 'not_available' };
+}
+```
+
 ## **Hacks and tricks**
 
 - ### To remove duplicates from array, you can use new Set() or new Map() contstructors.
@@ -86,7 +139,7 @@ const unique = [...new Set(array)];
 
 ```javascript
 const removeDuplicates = (array, key) => {
-  return [...new Map(arr.map(item => [item[key], item])).values()]
+  return [...new Map(array.map(item => [item[key], item])).values()]
 }
 ```
 
@@ -102,4 +155,19 @@ const difference = biggerArray.filter(x => !smallerArray.includes(x));
 
 ```javascript
 const difference = biggerArray.filter(x => !smallerArray.some(y => y.id === x.id));  
+```
+
+- ### Check if array contains false value / exclude false values.
+
+```javascript
+const arrayWithFalseValues = ['value_1', 'value_2', 'value_3', null, 'value_4', undefined, 0];
+
+const operateWithFalseValues = (array, type) => {
+  const excludeFalseValues = array.filter(item => !!item === true);
+  if (type === 'exclude') {
+    return excludeFalseValues;
+  } else {
+    return excludeFalseValues.length !== array.length;
+  }
+};
 ```

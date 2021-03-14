@@ -5,8 +5,7 @@
 ## Content ✈️ 
 
   - [**Working with hooks**](#working-with-hooks)
-  - [**Optimization**](#optimization)
-  - [**Redux**](#redux)
+  - [**Hacks and tricks**](#hacks-and-tricks)
 
 ## **Working with hooks**
 
@@ -39,8 +38,25 @@ Ideally there should be only one useEffect(() => {}, []) - which is **didMount**
 
 ```javascript
 // runs only once while component`s initialization
-const memoizedValue = useMemo(() => expensiveOperation(), [])
+const memoizedValue = useMemo(() => expensiveOperation(), []);
 
 // runs every time X or Y get changed 
-const memoizedValue = useMemo(() => expensiveOperation(X, Y), [X, Y])
+const memoizedValue = useMemo(() => expensiveOperation(X, Y), [X, Y]);
+```
+
+## **Hacks and tricks**
+
+- ### In case you have mapped values and a function that should be passed into each child - use closure and avoid in-line functions.
+
+> Instead of
+```javascript
+const getSomeValue = (id) => { // some operations }
+
+map(({ id }) => <ChildComponent onGetValue={() => getSomeValue(item.id)} />)  
+```
+> Use
+```javascript
+const getSomeValue = (id) = () => { // some operations }
+
+map(({ id }) => <ChildComponent onGetValue={getSomeValue(id)} />)  
 ```

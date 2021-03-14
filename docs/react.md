@@ -52,7 +52,7 @@ const memoizedValue = useMemo(() => expensiveOperation(X, Y), [X, Y]);
 ```javascript
 const getSomeValue = (id) => { // some operations }
 
-map(({ id }) => <ChildComponent onGetValue={() => getSomeValue(item.id)} />)  
+map(({ id }) => <ChildComponent onGetValue={() => getSomeValue(id)} />)  
 ```
 > Use
 ```javascript

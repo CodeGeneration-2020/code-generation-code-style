@@ -37,6 +37,15 @@ plugins=(
 
 > Here is description for our devs to be pruductive with thair IDE.
 
+### Make your vscode available from terminal
+
+1. Press `Cmd+Shift+P` in your VSCODE.  
+
+2. Search for `shell command`.  
+
+3. Press `Shell Command: Install 'code' command in PATH`.
+
+4. Close your VSCODE and try to launch it via console `code ./path-to-your-project-folder`
 ### Usefull shortcuts
 
 > For Linux/Windows use `Ctrl` instead of `⌘`.

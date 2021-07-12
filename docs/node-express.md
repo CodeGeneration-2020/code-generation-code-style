@@ -3,6 +3,7 @@
 [Return to Table of Contents](../README.md)
 
 ## Models
+
 > Our team strongly recommend to use [Typeorm](https://typeorm.io/#/).  
 > For our point of view this lib helps us to keep our code identical on each project  
 > and independent to chosen DB
@@ -16,6 +17,7 @@
     @PrimaryGeneratedColumn("uuid")
     id: string;
 ```
+
 ### Use Base entity instead of repository ✅
 
 > We prefer to structure our code via `BaseEntity` inheritance.
@@ -85,6 +87,7 @@ export default class BaseEntityEnchanted extends BaseEntity {
 ```
 
 ### Use class-validator ✅
+
 > You could use `class-validator` in combination with extended  
 > `BaseEntity` to handle autovalidation of your models (check previous step of the guide).
 
@@ -128,6 +131,7 @@ export class Post extends BaseEntityEnchanted {
   site: string;
 }
 ```
+
 > This combination of enhanced class and `class-validator` allows you  
 > to autovalidate your models on save/create etc.
 
@@ -215,6 +219,7 @@ router.post('/', ShopController.create);
 
 export default router;
 ```
+
 ## Controllers
 
 ### Use NestJs if that possible ✅

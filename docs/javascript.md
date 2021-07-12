@@ -2,14 +2,9 @@
 
 [Return to Table of Contents](../README.md)
 
-## Content ✈️ 
-
-  - [**Optimize your code-base**](#optimize-your-code-base)
-  - [**Hacks and tricks**](#hacks-and-tricks)
-
 ## **Optimize your code-base**
 
-- ### Try to always use object mappings and avoid if / else statements.
+### Try to always use object mappings and avoid if / else statements. ✅
 
 > This hack is optional, but can be used quite frequently to avoid redundant code spamming.
 
@@ -22,6 +17,7 @@ const STATUSES = {
 
 const handledStatus = STATUSES[receivedStatus];
 ```
+
 > Instead of
 
 ```javascript
@@ -34,6 +30,7 @@ if (receivedStatus === 'pending' {
   handledStatus = 'Your payment has been rejected!';
 }
 ```
+
 > You can even use it with functions to handle extra operations
 
 ```javascript
@@ -55,7 +52,7 @@ const STATUSES = {
 const handledStatus = STATUSES[receivedStatus]();
 ```
 
-- ### Try to always use ternary expressions. It helps to reduce redundant lines of code.
+### Try to always use ternary expressions. It helps to reduce redundant lines of code. ✅
 
 ```javascript
 const status = user?.id ? 'online' : 'offline:
@@ -72,7 +69,7 @@ if (user?.id) {
 }
 ```
 
-- ### Use async/await instead of then/catch.
+### Use async/await instead of then/catch. ✅
 
 > Instead of
 
@@ -92,7 +89,7 @@ try {
 }
 ```
 
-- ### Always try to move reusable methods in utils.js file.
+### Always try to move reusable methods in utils.js file ✅
 
 > Instead of writing similiar methods again and again just use
 
@@ -100,7 +97,7 @@ try {
 import { calculateTotalPrice } from '../utils.js';
 ```
 
-- ### ALWAYS avoid nested if/else statements.
+### ALWAYS avoid nested if/else statements ✅
 
 > Instead of
 
@@ -124,7 +121,9 @@ if (isLoggedIn) {
     { premiumStatus: 'not_available' };
 }
 ```
-- ### Server Interations.
+
+### Server Interactions. ✅
+
 > You should extract repetitive parts of the code to the separate functions / classes
 > Instead of
 
@@ -149,9 +148,11 @@ class UserService {
   }
 }
 ```
+
 > Better to use
 
 The best way to handle that is to create `HttpService` class which will be responsible for all the basic things in all services
+
 ```javascript
 // http.service.js
 import axios from 'axios'; // It could be any fetching services, such as default fetch, call api, xhr, etc.
@@ -198,6 +199,7 @@ class HttpSerivce {
   }
 }
 ```
+
 ```javascript
 // user.service.js
 import HttpService from './http.service';
@@ -218,7 +220,9 @@ class UserService extends HttpSerivce {
   })
 }
 ```
-- ### Always try to create models to serialize / deserialize your entities.
+
+### Always try to create models to serialize / deserialize your entities. ✅
+
 > Instead of
 
 ```javascript
@@ -267,11 +271,12 @@ export {createUserModel};
 export default UserModel;
 
 ```
+
 ```javascript
   // user.service.js
   import { createUserModel } from './user.model';
 
-  class UserService extends HttpSerivce {
+  class UserService extends HttpService {
     constructor() {
       super();
     }
@@ -283,11 +288,12 @@ export default UserModel;
     }
 }
 ```
+
 > With that approach you can work with all the data that comes from your server, such as entities. So your code will have better level of abstraction. Also as you see you can attach useful methods to the entity model.
 
 ## **Hacks and tricks**
 
-- ### To remove duplicates from array, you can use new Set() or new Map() contstructors.
+### To remove duplicates from array, you can use new Set() or new Map() constructors. ✅
 
 > With primitives inside
 
@@ -303,7 +309,7 @@ const removeDuplicates = (array, key) => {
 }
 ```
 
-- ### To find a difference between 2 arrays.
+### To find a difference between 2 arrays. ✅
 
 > With primitives inside
 
@@ -317,7 +323,7 @@ const difference = biggerArray.filter(x => !smallerArray.includes(x));
 const difference = biggerArray.filter(x => !smallerArray.some(y => y.id === x.id));  
 ```
 
-- ### Check if array contains false value / exclude false values.
+### Check if array contains false value / exclude false values. ✅
 
 ```javascript
 const arrayWithFalseValues = ['value_1', 'value_2', 'value_3', null, 'value_4', undefined, 0];

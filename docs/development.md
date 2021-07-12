@@ -37,7 +37,7 @@ plugins=(
 
 > Here is description for our devs to be pruductive with thair IDE.
 
-### Make your vscode available from terminal
+### Make your vscode available from terminal ✅
 
 1. Press `Cmd+Shift+P` in your VSCODE.  
 
@@ -45,8 +45,9 @@ plugins=(
 
 3. Press `Shell Command: Install 'code' command in PATH`.
 
-4. Close your VSCODE and try to launch it via console `code ./path-to-your-project-folder`
-### Usefull shortcuts
+4. Close your VSCODE and try to launch it via console `code ./path-to-your-project-folder`  
+
+### Useful shortcuts ✅
 
 > For Linux/Windows use `Ctrl` instead of `⌘`.
 
@@ -63,7 +64,7 @@ plugins=(
 `option + down` - move line of code down.  
 `option + up` - move line of code up.  
 
-### Useful extensions
+### Useful extensions ✅
 
 > To increase your codding speed you can use those extensions.  
 
@@ -75,7 +76,7 @@ plugins=(
 `GitLens` - helps you tracks pr/changes authors in the app.  
 `vscode-styled-components` - highlights syntax in styled components.  
 
-### Tips and Tricks
+### Tips and Tricks ✅
 
 > For better developer experience you can use our `vscode` config file.  
 > Link: [VSCODE settings file](../features-components/settings/settings.json)

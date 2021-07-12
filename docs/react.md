@@ -2,14 +2,10 @@
 
 [Return to Table of Contents](../README.md)
 
-## Content ✈️ 
-
-  - [**Working with hooks**](#working-with-hooks)
-  - [**Hacks and tricks**](#hacks-and-tricks)
 
 ## **Working with hooks**
 
-- ### Try to always move complex mount logic into a dedicated function.
+### Try to always move complex mount logic into a dedicated function ✅
 
 > Instead of
 
@@ -34,7 +30,7 @@ useEffect(() => {
 Do not use useEffect quite frequently, since it might significantly slow down the performance of your app as well as lead to some unexpected issues with while re-rendering.
 Ideally there should be only one useEffect(() => {}, []) - which is **didMount**
 
-- ### Try to use useMemo in case you have expensive calculations and do not forget to pass relevant dependencies this operation relies on.
+### Try to use useMemo in case you have expensive calculations ✅
 
 ```javascript
 // runs only once while component`s initialization
@@ -46,12 +42,12 @@ const memoizedValue = useMemo(() => expensiveOperation(X, Y), [X, Y]);
 
 ## Communication with your server
 
-### Use react-query
+### Use react-query ✅
 
 > In our company if your project doesn't use [GraphQL](./graphql.md) we prefer to use [react-query](https://react-query.tanstack.com/).  
 > This lib helps you to solve two problems in once: global data storage and clear way for interaction with your backend.  
 
-### Move query names to constant
+### Move query names to constant ✅
 
 ```javascript
 /// global-constant.js
@@ -75,7 +71,7 @@ function Example() {
 
 ```
 
-### Data fetching function
+### Data fetching function ✅
 
 > Try to hide all logic related to data serialization in your `service` file to keep your code clear.  
 > Check our [best practices about services](./javascript.md#server-interations).
@@ -91,11 +87,9 @@ function Example() {
  }
 ```
 
-
-
 ## Styled component
 
-### Use proper naming
+### Use proper naming ✅
 
 > In a large project its really hard to define where is `styled` components and where is `react` component.  
 > So it make sense to import all `styled` components via `*`
@@ -131,7 +125,7 @@ const App = () => {
 
 > With that syntax you know that `OtherComponent` - real react component and `Styled.Button` - `styled` component.
 
-### Proper props naming
+### Proper props naming ✅
 
 > To make your code more readable you should define props for styled component with `$`.
 
@@ -153,7 +147,7 @@ const Component = ({ color, disabled, onClick }) => {
 };
 ```
 
-### Extend your style components
+### Extend your style components ✅
 
 > When you have some reusable logic in styled components it make sense to move it to `base` component and extend children  with that.  
 
@@ -177,15 +171,18 @@ const Component = ({ color, disabled, onClick }) => {
 ```
 ## **Hacks and tricks**
 
-- ### In case you have mapped values and a function that should be passed into each child - use closure and avoid in-line functions.
+### In case you have mapped values and a function that should be passed into each child - use closure and avoid in-line functions. ✅
 
 > Instead of
+
 ```javascript
 const getSomeValue = (id) => { // some operations }
 
 map(({ id }) => <ChildComponent onGetValue={() => getSomeValue(id)} />)  
 ```
+
 > Use
+
 ```javascript
 const getSomeValue = (id) = () => { // some operations }
 

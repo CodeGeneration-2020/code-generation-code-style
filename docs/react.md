@@ -147,6 +147,34 @@ const Component = ({ color, disabled, onClick }) => {
 };
 ```
 
+### Styling: spacings / colors / fontSize / lineHeight ✅
+
+> Try to always use predefined values in terms of styling your app in order to increase reusability of your code-base. Also it is important to keep in mind that spacings should be equal to `4`! Create, for instance, `theme.ts` file where you can keep all the possible values.
+
+Instead of
+```
+text: {
+  paddingVertical: 15;
+  marginHorizontal: 13;
+  lineHeight: 11;
+  fontSize: 9;
+  color: 'yellow'
+}
+```
+
+Use
+```
+import { Spacings, LineHeight, FontSize, Colors } from '../../theme';
+
+text: {
+  paddingVertical: Spacings.s16;
+  marginHorizontal: Spacings.s12;
+  lineHeight: LineHeight.lh10;
+  fontSize: FontSize.fs10;
+  color: Colors.yellow90;
+}
+```
+
 ### Extend your style components ✅
 
 > When you have some reusable logic in styled components it make sense to move it to `base` component and extend children  with that.  

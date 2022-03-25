@@ -2,6 +2,108 @@
 
 [Return to Table of Contents](../README.md)
 
+## Basic conventions
+
+#### Import
+> Instead of
+```javascript
+import * as React from 'react';
+```
+> Use
+```javascript
+import React, { useState, Component } from 'react';
+```
+
+#### Typed component state for non trivial values
+> On the rare occasions where you need to initialize a hook with a null-ish value, you can make use of a generic and pass a union to correctly type your hook. See this instance:
+```javascript
+type User = {
+  email: string;
+  id: string;
+}
+
+// the generic is the < >
+// the union is the User | null
+// together, TypeScript knows, "Ah, user can be User or null".
+const [user, setUser] = useState<User | null>(null);
+```
+
+#### Reducer example
+> The other place where TypeScript shines with Hooks is with userReducer, where you can take advantage of [`discriminated unions`](https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions). Here’s a useful example:
+```javascript
+type AppState = {};
+type Action =
+  | { type: "SET_ONE"; payload: string }
+  | { type: "SET_TWO"; payload: number };
+
+export function reducer(state: AppState, action: Action): AppState {
+  switch (action.type) {
+    case "SET_ONE":
+      return {
+        ...state,
+        one: action.payload // `payload` is string
+      };
+    case "SET_TWO":
+      return {
+        ...state,
+        two: action.payload // `payload` is number
+      };
+    default:
+      return state;
+  }
+}
+```
+
+#### Extending Component Props
+> Sometimes you want to take component props declared for one component and extend them to use them on another component. But you might want to modify one or two. Well, remember how we looked at the two ways to type component props, types or interfaces? Depending on which you used determines how you extend the component props. Let’s first look at the way using `type`:
+```javascript
+type ButtonProps = {
+  /** the background color of the button */
+  color: string;
+  /** the text to show inside the button */
+  text: string;
+}
+
+type ContainerProps = ButtonProps & {
+  /** the height of the container (value used with 'px') */
+  height: number;
+}
+
+const Container: React.FC<ContainerProps> = ({ color, height, width, text }) => {
+  return <div style={{ backgroundColor: color, height: `${height}px` }}>{text}</div>
+}
+```
+
+> If you declared your props using an `interface`, then we can use the keyword extends to essentially `extend` that interface but make a modification or two:
+```javascript
+interface ButtonProps {
+  /** the background color of the button */
+  color: string;
+  /** the text to show inside the button */
+  text: string;
+}
+
+interface ContainerProps extends ButtonProps {
+  /** the height of the container (value used with 'px') */
+  height: number;
+}
+
+const Container: React.FC<ContainerProps> = ({ color, height, width, text }) => {
+  return <div style={{ backgroundColor: color, height: `${height}px` }}>{text}</div>
+}
+```
+
+#### Privat methods or props
+> With the new ECMAScript [`class fields`](https://github.com/tc39/proposal-private-methods) proposal we can do this easily and gracefully by using [`private fields`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields) as seen below:
+```javascript
+class Friends extends Component {
+  #fetchProfileByID () {}
+
+  render () {
+    return // jsx blob
+  }
+}
+```
 
 ## **Working with hooks**
 
@@ -133,15 +235,45 @@ const App = () => {
  const Button = styled.button`
   color: ${(p) => p.$color};
 `;
+
+type Props = React.PropsWithChildren<{
+	color: string;
+	disabled: boolean;
+	onClick: () => void;
+}>;
  
-const Component = ({ color, disabled, onClick }) => {
+const Component = ({ color, disabled, onClick, children }: Props) => {
   return (
     <Button
       $color={color}
       disabled={disabled}
       onClick={onClick}
     >
-      Click Me
+      {children}
+    </Button>
+  );
+};
+```
+
+> `ComponentPropsWithoutRef` is a generic type that supplies props for built-in React handlers and native HTML attributes. By passing in `"button"` as the template, you specify that the component is extending the HTML `button` element.
+
+```javascript
+ const Button = styled.button`
+  color: ${(p) => p.$color};
+`;
+
+type Props = React.ComponentPropsWithoutRef<"button"> {
+  color: string;
+};
+ 
+const Component = ({ children, onClick, color, type }: Props) => {
+  return (
+    <Button
+      $color={color}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
     </Button>
   );
 };
@@ -199,7 +331,7 @@ text: {
 ```
 ## **Hacks and tricks**
 
-### In case you have mapped values and a function that should be passed into each child - use closure and avoid in-line functions. ✅
+#### In case you have mapped values and a function that should be passed into each child - use closure and avoid in-line functions. ✅
 
 > Instead of
 

@@ -12,7 +12,7 @@
 > That gives us ability to have better understanding of brunch purposes
 
 ```git
-    git checkout -b feature/add-user-auth 
+    git checkout -b feature/<task-id>/add-user-auth 
 ```
 
 ### Use separators in your branch name ✅

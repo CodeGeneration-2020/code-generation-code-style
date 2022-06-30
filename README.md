@@ -4,12 +4,13 @@ Made by [Code Generation Software](https://codegeneration.cc)
 
 ## Topics 🚀
 
-1. [**JavaScript**](docs/javascript.md)
-2. [**React**](docs/react.md)
-3. [**NodeJS / Express**](docs/node-express.md)
-4. [**GraphQL**](docs/graphql.md)
-5. [**Development**](docs/development.md)
-6. [**Git Flow**](docs/git.md)
+1. [**General**](docs/general.md)
+2. [**JavaScript**](docs/javascript.md)
+3. [**React**](docs/react.md)
+4. [**NodeJS / Express**](docs/node-express.md)
+5. [**GraphQL**](docs/graphql.md)
+6. [**Development**](docs/development.md)
+7. [**Git Flow**](docs/git.md)
 
 ## Features / components 🔥
 

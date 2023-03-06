@@ -15,8 +15,8 @@ Made by [Code Generation Software](https://codegeneration.cc)
 ## Features / components 🔥
 
 1. [**React Navigation header HOC**](/features-components/react-navigation-header-hoc.md)
-2. [**React Protected Route HOC**](/features-components/react-protected-route-HOC.md)
-3. [**VSCODE settings**](/features-components/settings/settings.json)
+2. [**React Protected route HOC**](/features-components/react-protected-route-HOC.md)
+3. [**VSCode settings**](/features-components/settings/settings.json)
 
 ## Contact Us 😏
 

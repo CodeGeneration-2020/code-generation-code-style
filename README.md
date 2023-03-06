@@ -20,7 +20,7 @@ Made by [Code Generation Software](https://codegeneration.cc)
 
 ## Contact Us 😏
 
-Contact us via [`contact@codegenerationsoftware.com`](https://codegeneration.cc/#contact). And let us bring your idea into life!
+Contact us via [`contact@cgsteam.io`](cgsteam.io). And let us bring your idea into life!
 
 ## License
 
